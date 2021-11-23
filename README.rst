@@ -59,35 +59,35 @@ CLI
 
 **pdf**
 
-  -l, --line TEXT       json string of invoice line, can pass
+
+  -l, --line            json string of invoice line, can pass
                         multiple. ex: --line '{"price":15, "qty": 100,
                         "name":"1h cleaning services"}' --line ...
                         [required]
 
-  -c, --company TEXT    Company alias as in configuration.  [required]
-  -r, --customer TEXT   Customer alias as in configuration.
+  -c, --company         Company alias as in configuration.  [required]
+  -r, --customer        Customer alias as in configuration.
                         [required]
 
-  -dd, --due-date TEXT  If due date is not provided,
+  -e, --due-date        If due date is not provided,
                         `payment_term_days` is used to calculate it.
 
-  -s, --series TEXT     Invoice series  [required]
-  -n, --number INTEGER  Invoice number, if not provided, it will
+  -s, --series          Invoice series  [required]
+  -n, --number          Invoice number, if not provided, it will
                         calculated from company config for given
                         series.
 
-  -u, --currency TEXT   Currency, default=EUR
-  -da, --date TEXT      Invoice Date, `create_date` field.
-  -o, --output PATH     Output path, can be new filepath, directory.
+  -u, --currency        Currency, default=EUR
+  -d, --date            Invoice Date, `create_date` field.
+  -o, --output          Output path, can be new filepath, directory.
                         If it's not provided the invoice pdf will be
                         saved in current directory.
 
-  -t, --template TEXT   Template name, ex. simple.html.
+  -t, --template        Template name, ex. simple.html.
                         `custom_templates_dir` will be searched first,
                         then package templates.
-
-  --no-save             Decides whether to store invoice in config file.
-
+  --save                save invoice in config.
+  --no-save             don't save in config.
   -b, --browser         Open generated invoice in browser.
   --help                Show this message and exit.
 
