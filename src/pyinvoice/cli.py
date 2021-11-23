@@ -14,7 +14,7 @@ from pyinvoice.utils import slugify
 
 
 @click.group()
-@click.option("--config", "-C", envvar="INVOICE_CONFIG", type=click.Path())
+@click.option("--config", "-C", envvar="PYINVOICE_CONFIG", type=click.Path())
 @click.pass_context
 def main(ctx, config):
     if ctx.invoked_subcommand == "sample-config":
@@ -62,7 +62,7 @@ ex: --line \'{"price":15, "qty": 100, "name":"1h cleaning services"}\' --line ..
 )
 @click.option(
     "--due-date",
-    "-dd",
+    "-e",
     type=str,
     help="If due date is not provided, `payment_term_days` is used to calculate it.",
 )
@@ -74,7 +74,7 @@ ex: --line \'{"price":15, "qty": 100, "name":"1h cleaning services"}\' --line ..
     help="Invoice number, if not provided, it will calculated from company config for given series.",
 )
 @click.option("--currency", "-u", type=str, help="Currency, default=EUR")
-@click.option("--date", "-da", type=str, help="Invoice Date, `create_date` field.")
+@click.option("--date", "-d", type=str, help="Invoice Date, `create_date` field.")
 @click.option(
     "--output",
     "-o",
