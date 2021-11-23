@@ -11,40 +11,54 @@ cli invoice tool, store and print invoices as pdf. save companies and customers 
 
 work in progress ...
 
-* Free software: MIT license
 
 installation
 ------------
-poetry install
+.. code-block:: bash
 
-poetry shell
+    poetry install
+    poetry shell
+    
+for now ...
 
 config
 ------
-pyinvoice sample-config
+.. code-block:: bash
 
-then customize the gaps in $HOME/.pyinvoice.conf
+    pyinvoice sample-config
+    # then customize the gaps in $HOME/.pyinvoice.conf
+    # config path can be specified with -C flag and PYINVOICE_CONFIG env var.
 
-usage
------
+example usage
+-------------
 
-Example:
+.. code-block:: bash
 
-pyinvoice pdf --company foo --customer bar --line '{"price":10, "qty": 20, "name":"1h services"}' --series BAR -b
+    # print pdf saving it in current directory, result is invoice nr. BAR001
+    pyinvoice pdf --company foo --customer bar --line '{"price":10, "qty": 20, "name":"1h services"}' --series BAR
+    
+    # if above is repeated twice, the invoices numers will increase, BAR002, BAR003. This is calculated per series.
+    # see below for more options.
 
-pyinvoice [OPTIONS] COMMAND [ARGS]...
+CLI
+---
 
-Options:
-  -C, --config PATH
-  --help             Show this message and exit.
+.. code-block::
 
-Commands:
+    pyinvoice [OPTIONS] COMMAND [ARGS]...
 
-sample-config: generate sample config in home dir
+    Options:
+      -C, --config PATH
+      --help             Show this message and exit.
 
-pyinvoice pdf: prints pdf to given path
+    Commands:
 
-Options:
+    sample-config: generate sample config in home dir
+
+    pdf: prints pdf to given path
+
+**pdf**
+
   -l, --line TEXT       json string of invoice line, can pass
                         multiple. ex: --line '{"price":15, "qty": 100,
                         "name":"1h cleaning services"}' --line ...
@@ -72,7 +86,7 @@ Options:
                         `custom_templates_dir` will be searched first,
                         then package templates.
 
-  --save    Decides whether to store invoice in config
+  --no-save    Decides whether to store invoice in config
                         file.
 
   -b, --browser         Open generated invoice in browser.
@@ -106,3 +120,8 @@ This package was created with Cookiecutter_ and the `johanvergeer/cookiecutter-p
 
 Template taken from here and slightly modified:
 https://github.com/sparksuite/simple-html-invoice-template
+
+Licence
+-------
+
+Free software: MIT license
