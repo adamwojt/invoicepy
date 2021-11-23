@@ -65,25 +65,25 @@ CLI
                         "name":"1h cleaning services"}' --line ...
                         [required]
 
-  -c, --company         Company alias as in configuration.  [required]
-  -r, --customer        Customer alias as in configuration.
+  -c, --company         company alias as in configuration.  [required]
+  -r, --customer        customer alias as in configuration.
                         [required]
 
-  -e, --due-date        If due date is not provided,
+  -e, --due-date        if due date is not provided,
                         `payment_term_days` is used to calculate it.
 
-  -s, --series          Invoice series  [required]
-  -n, --number          Invoice number, if not provided, it will
+  -s, --series          invoice series  [required]
+  -n, --number          invoice number, if not provided, it will
                         calculated from company config for given
                         series.
 
-  -u, --currency        Currency, default=EUR
-  -d, --date            Invoice Date, `create_date` field.
-  -o, --output          Output path, can be new filepath, directory.
+  -u, --currency        currency, default=EUR
+  -d, --date            invoice Date, `create_date` field.
+  -o, --output          output path, can be new filepath, directory.
                         If it's not provided the invoice pdf will be
                         saved in current directory.
 
-  -t, --template        Template name, ex. simple.html.
+  -t, --template        template name, ex. simple.html.
                         `custom_templates_dir` will be searched first,
                         then package templates.
   --save                save invoice in config.
