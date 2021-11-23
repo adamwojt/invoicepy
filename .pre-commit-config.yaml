@@ -32,8 +32,6 @@ repos:
           - flake8-no-pep420==1.2.0
           - flake8-simplify==0.14.2
           - flake8-tidy-imports==4.5.0
-          - flake8-type-checking==1.1.0
-          - flake8-typing-imports==1.11.0
           - pep8-naming==0.12.1
 
   - repo: https://github.com/asottile/pyupgrade
