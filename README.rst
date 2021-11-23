@@ -1,0 +1,108 @@
+=========
+pyinvoice
+=========
+
+
+.. image:: https://img.shields.io/pypi/v/invoice.svg
+        :target: https://pypi.python.org/pypi/invoice
+
+
+cli invoice tool, store and print invoices as pdf. save companies and customers for later use.
+
+work in progress ...
+
+* Free software: MIT license
+
+installation
+------------
+poetry install
+
+poetry shell
+
+config
+------
+pyinvoice sample-config
+
+then customize the gaps in $HOME/.pyinvoice.conf
+
+usage
+-----
+
+Example:
+
+pyinvoice pdf --company foo --customer bar --line '{"price":10, "qty": 20, "name":"1h services"}' --series BAR -b
+
+pyinvoice [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -C, --config PATH
+  --help             Show this message and exit.
+
+Commands:
+
+sample-config: generate sample config in home dir
+
+pyinvoice pdf: prints pdf to given path
+
+Options:
+  -l, --line TEXT       json string of invoice line, can pass
+                        multiple. ex: --line '{"price":15, "qty": 100,
+                        "name":"1h cleaning services"}' --line ...
+                        [required]
+
+  -c, --company TEXT    Company alias as in configuration.  [required]
+  -r, --customer TEXT   Customer alias as in configuration.
+                        [required]
+
+  -dd, --due-date TEXT  If due date is not provided,
+                        `payment_term_days` is used to calculate it.
+
+  -s, --series TEXT     Invoice series  [required]
+  -n, --number INTEGER  Invoice number, if not provided, it will
+                        calculated from company config for given
+                        series.
+
+  -u, --currency TEXT   Currency, default=EUR
+  -da, --date TEXT      Invoice Date, `create_date` field.
+  -o, --output PATH     Output path, can be new filepath, directory.
+                        If it's not provided the invoice pdf will be
+                        saved in current directory.
+
+  -t, --template TEXT   Template name, ex. simple.html.
+                        `custom_templates_dir` will be searched first,
+                        then package templates.
+
+  --save    Decides whether to store invoice in config
+                        file.
+
+  -b, --browser         Open generated invoice in browser.
+  --help                Show this message and exit.
+
+
+to-do
+-----
+
+- tests
+- generate examples
+- improve readme
+
+nice-to-haves
+-------------
+
+- backup copy config on start
+- invoices should have unique ids (maybe companies and customers too?)
+- view saved invoices
+- reprint saved invoices (?)
+- tests
+
+Credits
+-------
+
+This package was created with Cookiecutter_ and the `johanvergeer/cookiecutter-poetry`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`johanvergeer/cookiecutter-poetry`: https://github.com/johanvergeer/cookiecutter-poetry
+
+
+Template taken from here and slightly modified:
+https://github.com/sparksuite/simple-html-invoice-template

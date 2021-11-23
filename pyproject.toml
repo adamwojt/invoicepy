@@ -1,0 +1,78 @@
+[tool.poetry]
+name = "pyinvoice"
+version = "0.1.0"
+description = "pyinvoice written in python"
+authors = ["Adam W. <adam1edinburgh@gmail.com>"]
+license = "MIT"
+readme = "README.rst"
+keywords = ["pyinvoice"]
+repository = "https://github.com/adamwojt/pyinvoice"
+packages = [
+    { include = "pyinvoice", from = "src" },
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development",
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/adamwojt/pyinvoice/issues"
+"Source" = "https://github.com/adamwojt/pyinvoice"
+
+[tool.poetry.dependencies]
+
+python = "^3.6"
+Click = "^7.0"
+pydantic = {version = "^1.8.0",extras = ["email"]}
+Jinja2 = "^3.0.0"
+weasyprint = "^53.0"
+
+[tool.poetry.extras]
+
+
+[tool.poetry.dev-dependencies]
+pip = "^19.2.3"
+wheel = "^0.33.6"
+pytest = "^4.6.5"
+pytest-runner = "^5.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+[tool.poetry.plugins."console_scripts"]
+"pyinvoice" = "pyinvoice.cli:main"
+
+[tool.dephell.main]
+from = {format = "poetry", path = "pyproject.toml"}
+to = {format = "setuppy", path = "setup.py"}
+
+[tool.isort]
+profile = "black"
+combine_as_imports = true
+lines_between_types = 1
+lines_after_imports = 2
+src_paths = ["src", "tests"]
+extend_skip = ["setup.py"]
+
+
+[tool.black]
+force-exclude = '''
+.*/setup\.py$
+'''
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+files = "src"

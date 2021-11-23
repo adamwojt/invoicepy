@@ -1,0 +1,43 @@
+{
+  "companies": [
+    {
+      "alias": "foo",
+      "company": {
+        "name": "Foo Inc.",
+        "address": {
+          "first_line": "Foo Str. 1/9",
+          "second_line": null,
+          "post_code": "552321",
+          "city": "Foo City",
+          "country": "Fooland",
+          "extra_info": "Extra address info."
+        },
+        "payment_information": {
+          "bank_name": "Bank name",
+          "iban": "FOO123",
+          "swift": "FOO234"
+        },
+        "email": "foo@foo.com",
+        "logo": null,
+        "extra_info": "Extra info about company."
+      }
+    }
+  ],
+  "customers": [
+    {
+      "alias": "bar",
+      "customer": {
+        "name": "Bar Inc.",
+        "address": {
+          "first_line": "Bar Str. 1-199",
+          "second_line": null,
+          "post_code": "322121",
+          "city": "Bar City",
+          "country": "Barland"
+        },
+        "payment_term_days": 15,
+        "email": "bar@bar.com"
+      }
+    }
+  ]
+}

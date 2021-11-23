@@ -1,0 +1,200 @@
+{
+  "title": "Invoice",
+  "type": "object",
+  "properties": {
+    "series": {
+      "title": "Series",
+      "minLength": 1,
+      "maxLength": 5,
+      "type": "string"
+    },
+    "number": {
+      "title": "Number",
+      "type": "integer"
+    },
+    "create_date": {
+      "title": "Create Date",
+      "type": "string",
+      "format": "date"
+    },
+    "currency": {
+      "title": "Currency",
+      "default": "EUR",
+      "minLength": 1,
+      "maxLength": 7,
+      "type": "string"
+    },
+    "company": {
+      "$ref": "#/definitions/Company"
+    },
+    "customer": {
+      "$ref": "#/definitions/Customer"
+    },
+    "due_date": {
+      "title": "Due Date",
+      "type": "string",
+      "format": "date"
+    },
+    "lines": {
+      "title": "Lines",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/InvoiceLine"
+      }
+    }
+  },
+  "required": [
+    "series",
+    "number",
+    "company",
+    "customer",
+    "lines"
+  ],
+  "definitions": {
+    "Address": {
+      "title": "Address",
+      "type": "object",
+      "properties": {
+        "first_line": {
+          "title": "First Line",
+          "type": "string"
+        },
+        "second_line": {
+          "title": "Second Line",
+          "type": "string"
+        },
+        "post_code": {
+          "title": "Post Code",
+          "type": "string"
+        },
+        "city": {
+          "title": "City",
+          "type": "string"
+        },
+        "country": {
+          "title": "Country",
+          "type": "string"
+        }
+      },
+      "required": [
+        "first_line",
+        "post_code",
+        "city",
+        "country"
+      ]
+    },
+    "PaymentInformation": {
+      "title": "PaymentInformation",
+      "type": "object",
+      "properties": {
+        "bank_name": {
+          "title": "Bank Name",
+          "type": "string"
+        },
+        "iban": {
+          "title": "Iban",
+          "type": "string"
+        },
+        "swift": {
+          "title": "Swift",
+          "type": "string"
+        }
+      },
+      "required": [
+        "bank_name",
+        "iban",
+        "swift"
+      ]
+    },
+    "Company": {
+      "title": "Company",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "payment_information": {
+          "$ref": "#/definitions/PaymentInformation"
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email"
+        },
+        "logo": {
+          "title": "Logo",
+          "format": "file-path",
+          "type": "string"
+        },
+        "extra_info": {
+          "title": "Extra Info",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "address",
+        "payment_information"
+      ]
+    },
+    "Customer": {
+      "title": "Customer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "payment_term_days": {
+          "title": "Payment Term Days",
+          "default": 15,
+          "type": "integer"
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "name",
+        "address"
+      ]
+    },
+    "InvoiceLine": {
+      "title": "InvoiceLine",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "qty": {
+          "title": "Qty",
+          "type": "number"
+        },
+        "price": {
+          "title": "Price",
+          "type": "number"
+        },
+        "vat": {
+          "title": "Vat",
+          "default": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "qty",
+        "price"
+      ]
+    }
+  }
+}

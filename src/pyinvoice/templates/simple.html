@@ -1,0 +1,218 @@
+<!--
+Template taken from here and slightly modified:
+https://github.com/sparksuite/simple-html-invoice-template
+-->
+{% set cursym=invoice.get_currency_symbol() or invoice.currency %}
+{% set is_vat=invoice.has_vat_lines() %}
+{% set colspan=5 if is_vat else 4 %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <title>Invoice{{invoice.name}} {{invoice.create_date}}</title>
+
+		<style>
+			.invoice-box {
+				max-width: 1600px;
+				margin: auto;
+				padding: 5px;
+				border: 1px solid #eee;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+				font-size: 16px;
+				line-height: 24px;
+				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+				color: #555;
+			}
+
+			.invoice-box table {
+				width: 100%;
+				line-height: inherit;
+				text-align: left;
+			}
+            .payment {
+                font-size: 13px;
+            }
+
+			.invoice-box table td {
+				padding: 5px;
+				vertical-align: top;
+			}
+
+			.invoice-box table tr td:nth-child(2) {
+				text-align: right;
+			}
+
+			.invoice-box table tr.top table td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.top table td.title {
+				font-size: 45px;
+				line-height: 45px;
+				color: #333;
+			}
+
+			.invoice-box table tr.information table td {
+				padding-bottom: 40px;
+			}
+
+			.invoice-box table tr.heading td {
+				background: #eee;
+				border-bottom: 1px solid #ddd;
+				font-weight: bold;
+                font-size: 13px;
+			}
+
+			.invoice-box table tr.details td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.item td {
+				border-bottom: 1px solid #eee;
+			}
+
+			.invoice-box table tr.item.last td {
+				border-bottom: none;
+			}
+
+            .invoice-box table tr.total td:nth-child({{colspan}}) {
+				border-top: 2px solid #eee;
+			}
+
+			@media only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+			}
+
+			/** RTL **/
+			.invoice-box.rtl {
+				direction: rtl;
+				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			}
+
+			.invoice-box.rtl table {
+				text-align: right;
+			}
+
+			.invoice-box.rtl table tr td:nth-child(2) {
+				text-align: left;
+			}
+		</style>
+	</head>
+
+    <body>
+		<div class="invoice-box">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top">
+                    <td colspan="{{colspan}}">
+						<table>
+							<tr>
+								<td class="title">
+                                    <img src="file:///{{invoice.company.logo or default_logo}}" style="width: 120px; height: auto;" />
+								</td>
+
+								<td>
+                                    <b>Invoice: {{invoice.name}}</b><br />
+                                    Date: {{invoice.create_date}}<br />
+                                    Due: {{invoice.due_date}}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information">
+                    <td colspan="{{colspan}}">
+						<table>
+							<tr>
+								<td>
+                                    <b>Seller:</b> <br />
+                                    {{invoice.company.name}}<br />
+                                    {% if invoice.company.address.second_line  %}
+                                        {{invoice.company.address.second_line}} <br />
+                                    {% endif %}
+                                    {{invoice.company.address.first_line}}<br />
+                                    {{invoice.company.address.city}}, {{invoice.company.address.post_code}} <br />
+                                    {{invoice.company.address.country}}</br>
+                                    {{invoice.company.extra_info or ''}}
+								</td>
+
+								<td>
+                                    <b>Buyer</b> </br>
+                                    {{invoice.customer.name}}<br />
+                                    {% if invoice.customer.address.second_line  %}
+                                        {{invoice.customer.address.second_line}} <br />
+                                    {% endif %}
+                                    {{invoice.customer.address.first_line}}<br />
+                                    {{invoice.customer.address.city}}, {{invoice.customer.address.post_code}} <br />
+                                    {{invoice.customer.address.country}}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="heading">
+					<td >Product</td>
+					<td>Qty</td>
+					<td>Price</td>
+                    {% if invoice.has_vat_lines() %}
+                    <td>VAT</td>
+                    {% endif %}
+                    <td>Total</td>
+				</tr>
+
+            {% for line in invoice.lines %}
+				<tr class="item">
+                    <td style="word-wrap: break-word;max-width: 40px;">{{ line.name }}</td>
+                    <td>{{ "%.2f" |format(line.qty)}}</td>
+                    <td>{{cursym}}{{"%.2f" | format(line.price)}}</td>
+                    {% if line.vat %}
+                    <td>{{line.vat}}%</td>
+                    {% endif %}
+                    <td>{{cursym}}{{"%.2f" |format(line.total)}}</td>
+				</tr>
+            {% endfor %}
+                <tr class="total">
+                    {% for _ in range(colspan-2)%}
+					    <td></td>
+                    {% endfor %}
+                    <td style="font-size:11px">
+                    {% if is_vat %}
+                        Total w/o VAT:</br>
+                        VAT</br>
+                        <b>Total:</b></br>
+                    {% else %}
+                        <b>Total</b>
+                    {% endif %}
+                    </td>
+                    {% if is_vat %}
+                    <td>{{cursym}}{{"%.2f" |format(invoice.total_wo_tax)}}</br>
+                        {{cursym}}{{"%.2f" |format(invoice.total_tax)}}</br>
+                        <b>{{cursym}}{{"%.2f"| format(invoice.total_inc_tax)}}</b></br>
+                    </td>
+                    {% else %}
+                        <td><b>{{cursym}}{{"%.2f"|format(invoice.total_wo_tax)}}</b></br>
+                    {% endif %}
+				</tr>
+            </table>
+                </br>
+                </br>
+                </br>
+                <div class="payment">
+                    {{invoice.company.payment_information.bank_name}}</br>
+                    IBAN: {{invoice.company.payment_information.iban}} </br>
+                    SWIFT/BIC: {{invoice.company.payment_information.swift}} </br>
+                </div>
+		</div>
+	</body>
+</html>
