@@ -86,8 +86,7 @@ CLI
                         `custom_templates_dir` will be searched first,
                         then package templates.
 
-  --no-save    Decides whether to store invoice in config
-                        file.
+  --no-save             Decides whether to store invoice in config file.
 
   -b, --browser         Open generated invoice in browser.
   --help                Show this message and exit.
