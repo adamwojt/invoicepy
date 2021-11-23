@@ -18,7 +18,7 @@ installation
 
     poetry install
     poetry shell
-    
+
 for now ...
 
 config
@@ -36,7 +36,7 @@ example usage
 
     # print pdf saving it in current directory, result is invoice nr. BAR001
     pyinvoice pdf --company foo --customer bar --line '{"price":10, "qty": 20, "name":"1h services"}' --series BAR
-    
+
     # if above is repeated twice, the invoices numers will increase, BAR002, BAR003. This is calculated per series.
     # see below for more options.
 
