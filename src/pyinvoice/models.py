@@ -12,6 +12,7 @@ from pydantic import (
     root_validator,
 )
 
+from pyinvoice.const import CURRENCY_SYMBOLS_MAP
 from pyinvoice.utils import slugify
 
 
@@ -98,8 +99,7 @@ class Invoice(BaseModel):
         return any(line.vat > 0 for line in self.lines)
 
     def get_currency_symbol(self) -> Optional[str]:
-        symbols = {"eur": "€", "usd": "$"}
-        return symbols.get(self.currency.lower())
+        return CURRENCY_SYMBOLS_MAP.get(self.currency.upper())
 
     @property
     def slug(self) -> str:

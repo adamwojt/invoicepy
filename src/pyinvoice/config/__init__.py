@@ -6,12 +6,9 @@ from typing import Dict, List, Optional
 import click
 import pydantic
 
+from pyinvoice.const import DEFAULT_CONFIG_NAME, DEFAULT_CONFIG_PATH
 from pyinvoice.models import Company, Customer, Invoice
 from pyinvoice.utils import write_json
-
-
-DEFAULT_CONFIG_NAME = ".pyinvoice.conf"
-DEFAULT_CONFIG_PATH = Path.home() / DEFAULT_CONFIG_NAME
 
 
 class InvoiceConfigError(Exception):
