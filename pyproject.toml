@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "pyinvoice"
 version = "0.1.0"
-description = "pyinvoice written in python"
+description = "pyinvoice simple cli tool for generating and storing invoices"
 authors = ["Adam W. <adam1edinburgh@gmail.com>"]
 license = "MIT"
-readme = "README.rst"
+readme = "README.md"
 keywords = ["pyinvoice"]
 repository = "https://github.com/adamwojt/pyinvoice"
 packages = [
