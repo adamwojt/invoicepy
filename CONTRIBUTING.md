@@ -12,8 +12,9 @@ We use [pre-commit](https://pre-commit.com/) to sort out linting
 pip3 install pre-commit
 pre-commit install
 ```
-For organising dependencies and eviroment we use [poetry](https://github.com/python-poetry/poetry)
 ### poetry
+For organising dependencies and eviroment we use [poetry](https://github.com/python-poetry/poetry)
+
 ```
 poetry install
 poetry shell
