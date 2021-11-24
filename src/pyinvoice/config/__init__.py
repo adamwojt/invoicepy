@@ -1,5 +1,4 @@
 import shutil
-
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -7,7 +6,7 @@ from typing import Dict, List, Optional
 import click
 import pydantic
 
-from pyinvoice.models import Company, Customer, Invoice, Series
+from pyinvoice.models import Company, Customer, Invoice
 from pyinvoice.utils import write_json
 
 
@@ -22,17 +21,19 @@ class InvoiceConfigError(Exception):
 class ConfigCompany(pydantic.BaseModel):
     alias: str
     company: Company
-    invoices: Optional[List[Invoice]]
+    invoices: List[Invoice]
 
-    @pydantic.validator("invoices", always=True)
-    def none_to_list(cls, v):  # noqa
-        return v if v is not None else []
+    @pydantic.root_validator(pre=True)
+    def none_to_list(cls, values):  # noqa
+        if not values.get("invoices"):
+            values["invoices"] = []
+        return values
 
-    def get_new_invoice_number_by_series(self, series: Series):
+    def get_new_invoice_number_by_series(self, series: str):
         series_groups = defaultdict(list)
-        for invoice in self.invoices or []:
+        for invoice in self.invoices:
             series_groups[invoice.series].append(invoice)
-        series_invoices = series_groups.get(series, None)
+        series_invoices = series_groups.get(series, None)  # type: ignore
         if series_invoices is None:
             return 1
         return max(invoice.number for invoice in series_invoices) + 1
@@ -122,7 +123,7 @@ class ConfigFile:
             raise e
 
 
-def write_sample_config(path: Optional[str] = None):
+def write_sample_config(path: Optional[str]):
     if path is None:
         config_path = DEFAULT_CONFIG_PATH
     else:

@@ -49,7 +49,7 @@ pytest-runner = "^5.1"
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 [tool.poetry.plugins."console_scripts"]
-"pyinvoice" = "pyinvoice.cli:main"
+"pyinvoice" = "pyinvoice.cli.main:cli"
 
 [tool.dephell.main]
 from = {format = "poetry", path = "pyproject.toml"}
@@ -58,16 +58,10 @@ to = {format = "setuppy", path = "setup.py"}
 [tool.isort]
 profile = "black"
 combine_as_imports = true
-lines_between_types = 1
 lines_after_imports = 2
 src_paths = ["src", "tests"]
 extend_skip = ["setup.py"]
 
-
-[tool.black]
-force-exclude = '''
-.*/setup\.py$
-'''
 
 [tool.mypy]
 check_untyped_defs = true

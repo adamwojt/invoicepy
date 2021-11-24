@@ -12,6 +12,8 @@ from pydantic import (
     root_validator,
 )
 
+from pyinvoice.utils import slugify
+
 
 class InvoiceLine(BaseModel):
     name: str
@@ -98,6 +100,12 @@ class Invoice(BaseModel):
     def get_currency_symbol(self) -> Optional[str]:
         symbols = {"eur": "€", "usd": "$"}
         return symbols.get(self.currency.lower())
+
+    @property
+    def slug(self) -> str:
+        return slugify(
+            f"{self.create_date.isoformat()}_{self.customer.name}_{self.series}{self.number}"
+        )
 
     @property
     def total_wo_tax(self) -> float:

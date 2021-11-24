@@ -246,7 +246,8 @@
       },
       "required": [
         "alias",
-        "company"
+        "company",
+        "invoices"
       ]
     },
     "ConfigCustomer": {

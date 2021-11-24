@@ -1,15 +1,14 @@
 import re
 import unicodedata
-
 from pathlib import Path
 
 
-def write_json(jsonstr: str, destination: Path):
+def write_json(jsonstr: str, destination: Path) -> None:
     with open(destination, "w") as fh:
         fh.write(jsonstr)
 
 
-def slugify(value, allow_unicode=False):
+def slugify(value: str, allow_unicode=False) -> str:
     """
     Taken from https://github.com/django/django/blob/master/django/utils/text.py
     Convert to ASCII if 'allow_unicode' is False. Convert spaces or repeated

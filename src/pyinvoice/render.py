@@ -15,6 +15,7 @@ from pyinvoice.models import Invoice
 
 
 DEFAULT_LOGO = str((Path(__file__).parent / "templates" / "dollar.png").absolute())
+DEFAULT_TEMPLATE_NAME = "simple.html"
 
 
 def _init_jinja_env(custom_templates_dir: Optional[Path]) -> Environment:
@@ -50,5 +51,8 @@ def write_pdf(
     template_name=Optional[str],
 ) -> Optional[bytes]:
     return htmlstr_to_pdf(
-        render_invoice(invoice, custom_templates_dir, template_name), output_path
+        render_invoice(
+            invoice, custom_templates_dir, template_name or DEFAULT_TEMPLATE_NAME
+        ),
+        output_path,
     )
