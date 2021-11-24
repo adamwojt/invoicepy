@@ -1,27 +1,31 @@
 [tool.poetry]
 name = "pyinvoice"
 version = "0.1.0"
-description = "pyinvoice simple cli tool for generating and storing invoices"
+description = "pyinvoice is a simple cli tool for generating and storing invoices."
+documentiation = "https://github.com/adamwojt/pyinvoice/README.md"
 authors = ["Adam W. <adam1edinburgh@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-keywords = ["pyinvoice"]
+keywords = ["pyinvoice", "invoice", "cli", "python", "finance", "tools",]
 repository = "https://github.com/adamwojt/pyinvoice"
 packages = [
     { include = "pyinvoice", from = "src" },
 ]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 2 - Alpha",
     "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Financial and Insurance Industry",
     "Natural Language :: English",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
-    "Topic :: Software Development",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Office/Business :: Financial :: Accounting",
 ]
 
 [tool.poetry.urls]
