@@ -77,4 +77,5 @@ def command_pdf(
     if open_in_browser:
         webbrowser.open(str(output_path))
 
+    click.echo(f"Invoice pdf saved to {output_path}")
     return output_path

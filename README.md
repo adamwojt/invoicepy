@@ -61,7 +61,7 @@ pdf                  prints pdf to given path
 Options:
   -l, --line TEXT       json string of invoice line, can pass multiple. ex:
                         --line '{"price":15, "qty": 100, "name":"1h cleaning
-                        services"}' --line ...  [required]
+                        services", "vat": 21}' --line ...  [required]
 
   -c, --company TEXT    company alias as in configuration.  [required]
   -r, --customer TEXT   customer alias as in configuration.  [required]

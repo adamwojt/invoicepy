@@ -85,7 +85,7 @@ class Invoice(BaseModel):
     due_date: Optional[date]
     lines: List[InvoiceLine]
 
-    @root_validator
+    @root_validator(skip_on_failure=True)
     def calculate_due_date(cls, values: Dict) -> Dict:  # noqa
         if values["due_date"]:
             return values
@@ -104,7 +104,7 @@ class Invoice(BaseModel):
     @property
     def slug(self) -> str:
         return slugify(
-            f"{self.create_date.isoformat()}_{self.customer.name}_{self.series}{self.number}"
+            f"{self.create_date.isoformat()}_{self.customer.name}_{self.name}"
         )
 
     @property
