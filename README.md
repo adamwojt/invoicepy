@@ -20,6 +20,10 @@ for now ...
 config
 ------
 
+config stores `companies` and `customers` by alias and invoices.
+
+`custom_templates_dir` is available for customising templates.
+
 ``` {.sourceCode .bash}
 pyinvoice sample-config
 # then customize it in $HOME/.pyinvoice.conf
@@ -47,10 +51,8 @@ Options:
   --help             Show this message and exit.
 
 Commands:
-
-sample-config: generate sample config in home dir
-
-pdf: prints pdf to given path
+sample-config        generate sample config in home dir
+pdf                  prints pdf to given path
 ```
 
 **pdf**
@@ -63,6 +65,7 @@ Options:
 
   -c, --company TEXT    company alias as in configuration.  [required]
   -r, --customer TEXT   customer alias as in configuration.  [required]
+  -d, --date TEXT       invoice date, `create_date` field.
   -e, --due-date TEXT   If due date is not provided, `payment_term_days` is
                         used to calculate it.
 
@@ -71,7 +74,6 @@ Options:
                         from company config for given series.
 
   -u, --currency TEXT   currency, default=EUR
-  -d, --date TEXT       invoice Date, `create_date` field.
   -o, --output PATH     output path, can be new filepath, directory. If it's
                         not provided the invoice pdf will be saved in current
                         directory.
@@ -83,6 +85,14 @@ Options:
   -b, --browser         open generated invoice in browser.
   --help                show this message and exit.
 ```
+
+templates
+---------
+currently two templates are available:
+- `simple.html` - simple english template (*default*).
+- `simple_lt.html` - simple lithuanian/english template.
+
+you can pass your own template name with `-t`. see `custom_templates_dir` (config section).
 
 schema
 ------
