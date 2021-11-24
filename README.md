@@ -84,6 +84,11 @@ Options:
   --help                show this message and exit.
 ```
 
+schema
+------
+-   [schema/invoice.json](src/pyinvoice/schema/invoice.json)
+-   [schema/config.json](src/pyinvoice/schema/config.json)
+
 to-do
 -----
 
