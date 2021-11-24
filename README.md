@@ -1,6 +1,6 @@
 pyinvoice
 =========
-<img src="examples/2021-11-23_bar-inc_bar1.png" alt="invoice" width="400"/>
+<img src="https://repository-images.githubusercontent.com/430929750/9b31ff95-6e51-434f-b719-a884effdbdf4" alt="invoice" width="666"/>
 
 **CLI** invoice tool, store and print invoices as *pdf*. save companies and
 customers for later use.
@@ -35,6 +35,8 @@ examples
 ``` {.sourceCode .bash}
 pyinvoice pdf --company foo --customer bar --line '{"price":10, "qty": 20, "name":"1h services"}' --series BAR
 ```
+<img src="examples/2021-11-23_bar-inc_bar1.png" alt="invoice" width="400"/>
+
 when above is repeated twice, the invoices numers will increase, BAR002, BAR003. this is calculated per series.
 see below for more options.
 
