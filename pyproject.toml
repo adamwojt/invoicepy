@@ -2,7 +2,7 @@
 name = "pyinvoice"
 version = "0.1.0"
 description = "pyinvoice is a simple cli tool for generating and storing invoices."
-documentiation = "https://github.com/adamwojt/pyinvoice/README.md"
+documentation = "https://github.com/adamwojt/pyinvoice/README.md"
 authors = ["Adam W. <adam1edinburgh@gmail.com>"]
 license = "MIT"
 readme = "README.md"
