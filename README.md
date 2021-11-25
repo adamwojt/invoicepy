@@ -10,11 +10,8 @@ installation
 ------------
 
 ``` {.sourceCode .bash}
-poetry install
-poetry shell
+pip install invoicepy
 ```
-
-for now ...
 
 config
 ------
