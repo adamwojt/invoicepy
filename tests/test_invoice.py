@@ -1,4 +1,4 @@
-from pyinvoice.models import Invoice
+from invoicepy.models import Invoice
 
 
 def test_invoice_calculated_fields(invoice_minimal):

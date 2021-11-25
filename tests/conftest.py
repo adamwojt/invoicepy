@@ -4,8 +4,8 @@ from pathlib import Path
 import pytest
 from _pytest import config
 
-from pyinvoice.config import ConfigFile
-from pyinvoice.models import Invoice, InvoiceLine
+from invoicepy.config import ConfigFile
+from invoicepy.models import Invoice, InvoiceLine
 
 
 @pytest.fixture
@@ -15,7 +15,7 @@ def root_project_dir():
 
 @pytest.fixture
 def sample_config_path(root_project_dir):
-    return root_project_dir / "src" / "pyinvoice" / "config" / "sample_config.json"
+    return root_project_dir / "src" / "invoicepy" / "config" / "sample_config.json"
 
 
 @pytest.fixture
@@ -65,7 +65,7 @@ def invoice_vat_usd(company, customer, series, vat_invoice_line):
 
 @pytest.fixture
 def sample_config_temp(sample_config_path, tmp_path):
-    config_path = tmp_path / ".pyinvoice.conf"
+    config_path = tmp_path / ".invoicepy.conf"
     shutil.copy(sample_config_path, config_path)
     return config_path
 

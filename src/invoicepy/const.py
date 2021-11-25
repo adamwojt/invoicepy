@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-DEFAULT_CONFIG_NAME = ".pyinvoice.conf"
+DEFAULT_CONFIG_NAME = ".invoicepy.conf"
 DEFAULT_CONFIG_PATH = Path.home() / DEFAULT_CONFIG_NAME
 DEFAULT_LOGO = str((Path(__file__).parent / "templates" / "dollar.png").absolute())
 DEFAULT_TEMPLATE_NAME = "simple.html"

@@ -4,10 +4,10 @@ from typing import List, Optional
 
 import click
 
-from pyinvoice.cli.helpers import determine_output_path, parse_invoice
-from pyinvoice.config import ConfigFile, write_sample_config
-from pyinvoice.models import InvoiceLine
-from pyinvoice.render import write_pdf
+from invoicepy.cli.helpers import determine_output_path, parse_invoice
+from invoicepy.config import ConfigFile, write_sample_config
+from invoicepy.models import InvoiceLine
+from invoicepy.render import write_pdf
 
 
 def command_sample_config(config_path: str):

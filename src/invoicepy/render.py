@@ -11,15 +11,15 @@ from jinja2 import (
 )
 from weasyprint import HTML
 
-from pyinvoice.const import DEFAULT_LOGO, DEFAULT_TEMPLATE_NAME
-from pyinvoice.models import Invoice
+from invoicepy.const import DEFAULT_LOGO, DEFAULT_TEMPLATE_NAME
+from invoicepy.models import Invoice
 
 
 def _init_jinja_env(custom_templates_dir: Optional[Path]) -> Environment:
     loaders = []
     if custom_templates_dir is not None:
         loaders.append(FileSystemLoader(custom_templates_dir))
-    loaders.append(PackageLoader("pyinvoice"))
+    loaders.append(PackageLoader("invoicepy"))
     loader = ChoiceLoader(loaders)
     return Environment(
         loader=loader,

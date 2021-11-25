@@ -1,7 +1,7 @@
 # Local development
 ```
-git clone git@github.com:adamwojt/pyinvoice.git
-cd pyinvoice
+git clone git@github.com:adamwojt/invoicepy.git
+cd invoicepy
 ```
 > **Note:** We recommend that you use a personal [fork](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo) for this step. If you are new to GitHub collaboration,
 > you can refer to the [Forking Projects Guide](https://guides.github.com/activities/forking/).
@@ -18,7 +18,7 @@ For organising dependencies and eviroment we use [poetry](https://github.com/pyt
 ```
 poetry install
 poetry shell
-pyinvoice --help
+invoicepy --help
 ```
 
 ### Testing

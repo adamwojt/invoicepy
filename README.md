@@ -1,4 +1,4 @@
-pyinvoice
+invoicepy
 =========
 <img src="https://repository-images.githubusercontent.com/430929750/9b31ff95-6e51-434f-b719-a884effdbdf4" alt="invoice" width="666"/>
 
@@ -19,13 +19,13 @@ for now ...
 config
 ------
 
-[config](src/pyinvoice/schema/config.json) stores `companies` and `customers` by alias and [invoices](src/pyinvoice/schema/invoice.json).
+[config](src/invoicepy/schema/config.json) stores `companies` and `customers` by alias and [invoices](src/invoicepy/schema/invoice.json).
 `custom_templates_dir` is available for customising templates.
 
-write [sample config](src/pyinvoice/config/sample_config.json) with:
+write [sample config](src/invoicepy/config/sample_config.json) with:
 ``` {.sourceCode .bash}
-pyinvoice sample-config
-# then customize it in $HOME/.pyinvoice.conf
+invoicepy sample-config
+# then customize it in $HOME/.invoicepy.conf
 ```
 
 examples
@@ -33,7 +33,7 @@ examples
 
 1. print pdf saving it in current directory, result is invoice nr. BAR001
 ``` {.sourceCode .bash}
-pyinvoice pdf --company foo --customer bar --line '{"price":10, "qty": 20, "name":"1h services"}' --series BAR
+invoicepy pdf --company foo --customer bar --line '{"price":10, "qty": 20, "name":"1h services"}' --series BAR
 ```
 <img src="examples/2021-11-23_bar-inc_bar1.png" alt="invoice" width="400"/>
 
@@ -42,14 +42,14 @@ see below for more options.
 
 2. below example won't save invoice in config, open in in browser and use custom template specified in `custom_templates_dir`:
 ```
-pyinvoice pdf --company foo --customer bar --line ... -b --no-save --series BAR --number 25 --curency USD --template my_custom_template.html
+invoicepy pdf --company foo --customer bar --line ... -b --no-save --series BAR --number 25 --curency USD --template my_custom_template.html
 ```
 
 cli
 ---
 
 ``` {.sourceCode .}
-pyinvoice [OPTIONS] COMMAND [ARGS]...
+invoicepy [OPTIONS] COMMAND [ARGS]...
 
 Options:
   -C, --config PATH
@@ -108,8 +108,8 @@ you can pass your own template name with `-t`. see `custom_templates_dir` (confi
 
 schema
 ------
--   [schema/invoice.json](src/pyinvoice/schema/invoice.json)
--   [schema/config.json](src/pyinvoice/schema/config.json)
+-   [schema/invoice.json](src/invoicepy/schema/invoice.json)
+-   [schema/config.json](src/invoicepy/schema/config.json)
 
 
 contributing

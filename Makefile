@@ -4,12 +4,12 @@
 
 define SCHEMA_UPDATE
 import json
-from pyinvoice.models import Invoice
-from pyinvoice.config import Config
-with open('src/pyinvoice/schema/invoice.json', 'w') as fh:
+from invoicepy.models import Invoice
+from invoicepy.config import Config
+with open('src/invoicepy/schema/invoice.json', 'w') as fh:
 	fh.write(Invoice.schema_json(indent=4))
 
-with open('src/pyinvoice/schema/config.json', 'w') as fh:
+with open('src/invoicepy/schema/config.json', 'w') as fh:
 	fh.write(Config.schema_json(indent=4))
 endef
 export SCHEMA_UPDATE

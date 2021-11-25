@@ -1,12 +1,12 @@
-"""Console script for pyinvoice."""
+"""Console script for invoicepy."""
 import sys
 from pathlib import Path
 
 import click
 
-from pyinvoice.cli.commands import command_pdf, command_sample_config
-from pyinvoice.cli.helpers import parse_invoice_lines
-from pyinvoice.config import ConfigFile
+from invoicepy.cli.commands import command_pdf, command_sample_config
+from invoicepy.cli.helpers import parse_invoice_lines
+from invoicepy.config import ConfigFile
 
 
 @click.group()

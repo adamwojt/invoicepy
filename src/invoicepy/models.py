@@ -12,8 +12,8 @@ from pydantic import (
     root_validator,
 )
 
-from pyinvoice.const import CURRENCY_SYMBOLS_MAP
-from pyinvoice.utils import slugify
+from invoicepy.const import CURRENCY_SYMBOLS_MAP
+from invoicepy.utils import slugify
 
 
 class InvoiceLine(BaseModel):

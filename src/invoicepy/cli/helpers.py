@@ -3,7 +3,7 @@ from typing import List, Optional
 
 import click
 
-from pyinvoice.models import Company, Customer, Invoice, InvoiceLine
+from invoicepy.models import Company, Customer, Invoice, InvoiceLine
 
 
 def parse_invoice_lines(_, __, value: List[str] = None) -> List[InvoiceLine]:

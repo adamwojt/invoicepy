@@ -6,9 +6,9 @@ from typing import Dict, List, Optional
 import click
 import pydantic
 
-from pyinvoice.const import DEFAULT_CONFIG_NAME, DEFAULT_CONFIG_PATH
-from pyinvoice.models import Company, Customer, Invoice
-from pyinvoice.utils import write_json
+from invoicepy.const import DEFAULT_CONFIG_NAME, DEFAULT_CONFIG_PATH
+from invoicepy.models import Company, Customer, Invoice
+from invoicepy.utils import write_json
 
 
 class InvoiceConfigError(Exception):

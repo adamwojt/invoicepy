@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-"""Tests for `pyinvoice` package."""
+"""Tests for `invoicepy` package."""
 
 import click
 import pytest
 from click.testing import CliRunner
 
-from pyinvoice.cli.helpers import parse_invoice_lines
-from pyinvoice.cli.main import cli
+from invoicepy.cli.helpers import parse_invoice_lines
+from invoicepy.cli.main import cli
 
 
 def test_pdf_command(correct_pdf_args, output_path_temp):
