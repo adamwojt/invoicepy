@@ -12,6 +12,7 @@ installation
 ``` {.sourceCode .bash}
 pip install invoicepy
 ```
+> *see troubleshooting section below for common problems*
 
 config
 ------
@@ -26,7 +27,7 @@ invoicepy sample-config
 ```
 
 examples
--------------
+--------
 
 1. print pdf saving it in current directory, result is invoice nr. BAR001
 ``` {.sourceCode .bash}
@@ -109,13 +110,22 @@ schema
 -   [schema/config.json](src/invoicepy/schema/config.json)
 
 
+troubleshooting
+---------------
+
+| Problem|Solution|
+|--------|--------|
+| `invoicepy: command not found`| Your distro didn't append python bin folder to your PATH. You can check where package lives with `pip3 show invoicepy` and add appropriate path. Example in your .bashrc: `export PATH="$PATH:$HOME/.local/bin"`|
+|`OSError: encoder jpeg2k not available`| This is caused by pillow needing some extra libs, on Ubuntu: `sudo apt-get install libjpeg8-dev` then `pip install --no-cache-dir -I pillow`. On other distros find `libjpeg8-dev` equiavilent or google around for solutions regarding pillow.|
+|`sample-config` says `Aborting` and exists| Fixed in `0.1.1`|
+
 contributing
--------------
+------------
 
 if you written cool new template or improved some features, feel free to fork and PR. See [contributing guidelines](CONTRIBUTING.md).
 
 to-dos
--------------
+------
 
 -   use babel for translations and locale
 -   extend tests
