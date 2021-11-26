@@ -130,15 +130,13 @@ def write_sample_config(path: Optional[str]):
         config_path = config_path / DEFAULT_CONFIG_NAME
 
     sample = Path(__file__).parent / "sample_config.json"
-    if (
-        config_path.exists()
-        and click.confirm(
+    if config_path.exists() and (
+        not click.confirm(
             f"Config file exists at {config_path}, are you sure you want to override it with sample?"
         )
-        and click.confirm("ARE YOU 100% SURE?")
+        or not click.confirm("ARE YOU 100% SURE?")
     ):
-        pass
-    else:
         click.echo("Aborting")
         return
+    click.echo(f"Sample config copied to {str(config_path)}")
     shutil.copy(sample, DEFAULT_CONFIG_PATH)
