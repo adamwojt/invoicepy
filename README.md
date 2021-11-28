@@ -1,6 +1,6 @@
 invoicepy
 =========
-<img src="https://repository-images.githubusercontent.com/430929750/5de2c42c-81c5-4cf3-8910-869a6ceebcf1" alt="invoice" width="666"/>
+<img src="https://repository-images.githubusercontent.com/430929750/36502a64-8878-4341-a38b-11a2f1b78155" alt="invoice" width="666"/>
 
 **CLI** invoice tool, store and print invoices as *pdf*. save companies and
 customers for later use.
