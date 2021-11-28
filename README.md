@@ -38,7 +38,7 @@ invoicepy pdf --company foo --customer bar --line '{"price":10, "qty": 20, "name
 when above is repeated twice, the invoices numers will increase, BAR002, BAR003. this is calculated per series.
 see below for more options.
 
-2. below example won't save invoice in config, open in in browser and use custom template specified in `custom_templates_dir`:
+2. below example won't save invoice in config, open in it browser and use custom template specified in `custom_templates_dir`:
 ```
 invoicepy pdf --company foo --customer bar --line ... -b --no-save --series BAR --number 25 --curency USD --template my_custom_template.html
 ```
