@@ -139,4 +139,4 @@ def write_sample_config(path: Optional[str]):
         click.echo("Aborting")
         return
     click.echo(f"Sample config copied to {str(config_path)}")
-    shutil.copy(sample, DEFAULT_CONFIG_PATH)
+    shutil.copy(sample, config_path)
