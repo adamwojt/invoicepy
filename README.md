@@ -75,7 +75,7 @@ Options:
 
   -c, --company TEXT    company alias as in configuration.  [required]
   -r, --customer TEXT   customer alias as in configuration.  [required]
-  -d, --date TEXT       invoice date, `create_date` field.
+  -d, --date TEXT       invoice date, `create_date` field. `yyyy-mm-dd` format
   -e, --due-date TEXT   If due date is not provided, `payment_term_days` is
                         used to calculate it.
 
